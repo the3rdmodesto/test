@@ -1,0 +1,155 @@
+body {background-image: url(../image/bg-wood.png);}
+
+#slider-range-min {
+	height: 5px;
+	border: 0;
+	background-color: #D5C9C9;
+}
+
+.header-title {
+	width: 88%;
+	margin: 40px auto 0 auto;
+	color: #FFF;
+	font-size: 26px;
+	background-color: rgba(0,0,0,0.2);
+	padding: 20px;
+}
+
+.main-container {
+	width: 90%;
+	margin: 40px auto 50px auto;
+	background-color: #FFF;
+	padding: 20px 20px 70px 20px;
+	text-align: center;
+}
+
+.main-container .main-container-title {
+	color: #FF6600;
+	border-bottom: 1px solid #FF6600;
+	text-align: center;
+	width: 90%;
+	margin: 0 auto 50px auto;
+	font-size: 20px;
+}
+
+.main-container .heart-rate-container {
+	border: 0px solid #C3C3C3;
+	padding: 30px;
+	width: 15%;
+	margin: 0 auto;
+}
+
+.main-container .heart-rate-container input{
+	margin: 0 auto;
+}
+
+.main-container .body-temp-container,
+.main-container .pain-scale-container {
+	border: 0px solid black;
+	width: auto;
+	display: inline-block;
+	padding: 0 50px 10px 50px;
+}
+
+.main-container .body-temp-container input {
+	width: 100%;
+	text-align: center;
+	font-size: 40px;
+}
+
+.main-container .body-temp-container .body-temp-label {
+	text-align: left;
+	border: 0px solid #c3c3c3;
+	color: #BDA4A7;
+	padding-top: 20px;
+}
+
+.main-container .height-container,
+.main-container .weight-container {
+	border: 0px solid #C3C3C3;
+	width: 30%; height: 10%;
+	display: inline-block;
+	padding: 100px 0px 0px 0px;
+}
+
+.main-container .height-container input[type='number'] {
+	border: 0;
+	font-size: 60px;
+	color: #FF6600;
+	width: 125px;
+	display: inline-block;
+	top: -90px;
+	position: relative;
+	text-align: center;
+}
+
+.common-icon {
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	width: 100px; height: 134px;
+	display: inline-block;
+}
+
+.main-container .height-container .height-icon {
+	background-image: url(../image/icon-height.png);
+}
+
+.main-container .height-container .cm-label {
+	border: 0px solid black;
+	color: #C3C3C3;
+	font-size: 25px;
+	width: 48%; margin: 0 auto;
+	text-align: right;
+	top: -85px;
+	position: relative;
+}
+
+
+.main-container .weight-container input[type='number'] {
+	border: 0;
+	font-size: 60px;
+	color: #FF6600;
+	width: 125px;
+	display: inline-block;
+	top: -90px;
+	position: relative;
+}
+
+.main-container .weight-container .weight-icon {
+	background-image: url(../image/icon-weight.png);
+}
+
+.main-container .weight-container .kq-label {
+	border: 0px solid black;
+	color: #C3C3C3;
+	font-size: 25px;
+	width: 30%;
+	text-align: right;
+	top: -85px;
+	position: relative;
+}
+
+.main-container .bmi-container {
+	border: 5px solid #C3C3C3;
+	display: inline-block;
+	-webkit-border-radius: 10%;
+	padding: 20px;
+}
+
+.main-container .bmi-container input {
+	text-align: center;
+	font-size: 60px;
+	width: 150px;
+	color: #FF6600;
+	border: 0;
+	margin-bottom: 10px;
+}
+
+.main-container .bmi-container  .bmi-label {
+	color: #FFFFFF;
+	background-color: #BDA4A7;
+	margin: 0 auto;
+	padding: 1px;
+	font-size: 18px;
+	width: 30%;
+}

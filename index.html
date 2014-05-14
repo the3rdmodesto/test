@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html><head>
+	<link rel= "stylesheet" href= "css/stylesheet.css" />
+	<link rel= "stylesheet" href= "css/normalize.css" />
+	<link rel="stylesheet" href="css/jquery.ui.all.css">
+	
+	<script src="js/jquery-2.1.1.js"></script>
+	<script src="js/jquery.knob.js"></script>
+	<script src="js/jquery-1.9.1.js"></script>
+	<script src="js/jquery.ui.core.js"></script>
+	<script src="js/jquery.ui.widget.js"></script>
+	<script src="js/jquery.ui.mouse.js"></script>
+	<script src="js/jquery.ui.slider.js"></script>
+<style>
+
+</style>
+</head><body>
+	<div class= "header-container">
+		<div class= "header-title"> PHYSICAL EXAMINATION </div>
+	<div>
+	
+	<div class= "main-container">
+	
+		<div class= "main-container-title"> <h3> CONSCIOUS. COHERENT. AMBULATORY. NOT IN DISTRESS </h3> </div>
+		
+		<div class= "heart-rate-container">
+			<input class="heart-rate" data-angleOffset=0 data-angleArc=359 data-fgColor="#BF0B0A" data-thickness= "0.2" data-skin= "tron" data-max= "200" >
+		</div>
+		
+		<div>
+			<div class= "body-temp-container">
+					<input type="text" class="temperature" style="border:0; color:#f6931f; font-weight:bold;" />
+				<div id="slider-range-min"></div>
+				<div class= "body-temp-label"> <h2>BODY TEMP (C)</h2> </div>
+			</div>
+			
+			<div class= "body-temp-container">
+					<input type="text" class="temperature" style="border:0; color:#f6931f; font-weight:bold;" />
+				<div id="slider-range-min"></div>
+				
+				<div class= "body-temp-label"> <h2>PAIN SCALE</h2> </div>
+			</div>
+		</div>
+		
+		<div>
+			<div class= "height-container">
+				<div class= "height-icon common-icon"></div>
+				<input type= "number" min= 30 max= 200 value= "30" />
+				<div class= "cm-label"> cm </div>
+			</div>
+			
+			<div class= "bmi-container">
+				<div class= "bmi-icon"></div>
+				<div> <input type= "text" value= "21.4" /></div>
+				<div class= "bmi-label">BMI</div>
+			</div>
+			
+			<div class= "weight-container">
+				<input type= "number" min= 30 max= 200 value= "30" />
+				<div class= "weight-icon common-icon"></div>
+				<div class= "kq-label"> kq </div>
+			</div>
+		</div>
+	</div>
+		
+		
+		
+		
+		
+		
+		
+
+	</div>	
+	
+	
+<script>
+	$(function() {
+		$('.heart-rate').knob();
+	});
+
+	var initval = 40;
+	$({value: 0}).animate({value: initval}, {
+		duration: 500,
+		easing:'swing',
+		step: function()
+		{
+			$('.heart-rate').val(this.value).trigger('change');
+		}
+	});
+
+	$(function() {
+		$( "#slider-range-min" ).slider({
+			range: "min",
+			isRTL: true,
+			value: 70,
+			min: 70,
+			max: 240,
+			slide: function( event, ui ) {
+				$( ".temperature" ).val( ui.value );
+			}
+		});
+		$( ".temperature" ).val( $( "#slider-range-min" ).slider( "value" ) );
+	});
+</script>
+
+
+
+</body></html>
