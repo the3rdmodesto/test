@@ -179,7 +179,7 @@
 			var value = parseInt( $( this ).text(), 10 );
 			$( this ).empty().slider({
 				value: value,
-				range: "max",
+				range: "min",
 				isRTL: false,
 				animate: true,
 				slide: function( event, ui ) {
@@ -192,13 +192,13 @@
 	});
 	
    $("#text-weight, #text-height").bind('keyup mouseup', function (){
-		var n1 = $("#text-weight").val();
-		var n2 = $("#text-height").val();
+		var kg = $("#text-weight").val();
+		var cm = $("#text-height").val();
 		
 		//var height = n2 / 100;
-		var height = n2 / 100;
-		var n = Math.pow(height,2)
-		var result = n1 / height;
+		var height = cm / 100;
+		var sqm = Math.pow(height,2)
+		var result = kg / sqm;
 		
 		$("#bmi-result").text(result.toFixed(1))
 		if(result >= 18.5) {
