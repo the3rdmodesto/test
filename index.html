@@ -3,6 +3,7 @@
 	<link rel= "stylesheet" href= "css/stylesheet.css" />
 	<link rel= "stylesheet" href= "css/normalize.css" />
 	<link rel="stylesheet" href="css/jquery.ui.all.css">
+	<link href='http://fonts.googleapis.com/css?family=Jura' rel='stylesheet' type='text/css'>
 	
 	<script src="js/jquery-2.1.1.js"></script>
 	<script src="js/jquery.knob.js"></script>
@@ -98,18 +99,18 @@
 		<!-- HEIGHT -->
 			<div class= "height-container">
 				<div class= "height-icon common-icon"></div>
-				<input id= "text-height" type= "number" min= 30 max= 200 value= "30" />
+				<input id= "text-height" type= "number" min= 30 max= 200 value= 30 />
 				<div class= "cm-label"> cm </div>
 			</div>
 		
 		<!-- BMI -->		
 			<div class= "bmi-container">
 				<div class= "bmi-icon">
-					<div class= "bmi-green common-bmi-color no-color">i</div>
-					<div class= "bmi-yellow common-bmi-color no-color">i</div>
-					<div class= "bmi-light-orange common-bmi-color no-color">i</div>
-					<div class= "bmi-orange common-bmi-color no-color">i</div>
-					<div class= "bmi-red common-bmi-color no-color">i</div>
+					<div class= "bmi-green common-bmi-color">i</div>
+					<div class= "bmi-yellow common-bmi-color">i</div>
+					<div class= "bmi-light-orange common-bmi-color">i</div>
+					<div class= "bmi-orange common-bmi-color">i</div>
+					<div class= "bmi-red common-bmi-color">i</div>
 				</div>
 				<div id= "bmi-result" class= "bmi-result" ></div>
 				<div class= "bmi-label">BMI</div>
@@ -117,7 +118,7 @@
 			
 		<!-- WEIGHT -->
 			<div class= "weight-container">
-				<input id= "text-weight" type= "number" min= 30 max= 200 value= "30" />
+				<input id= "text-weight" type= "number" min= 2 max= 200 value= 2 />
 				<div class= "weight-icon common-icon"></div>
 				<div class= "kq-label"> kq </div>
 			</div>
@@ -155,7 +156,7 @@
 	});
 
 	$(function() {
-		$( ".temperature-result" ).slider({
+		$(".temperature-result").slider({
 			range: "min",
 			isRTL: true,
 			value: 70,
@@ -165,17 +166,14 @@
 			step: 0.1,
 			animate: true,
 			slide: function( event, ui ) {
-				$( ".temperature" ).val( ui.value);
+				$(".temperature").val( ui.value);
 			}
 		});
-		$( ".temperature" ).val( $( ".temperature-result" ).slider( "value" ));
+		$(".temperature").val( $(".temperature-result").slider("value"));
 	});
 	
 	$(function() {
-		
-		// setup graphic EQ
-		$( ".temp-pain-container .body-temp-container > .pain-scale-result" ).each(function() {
-			// read initial values from markup and remove that
+		$(".temp-pain-container .body-temp-container > .pain-scale-result").each(function() {
 			var value = parseInt( $( this ).text(), 10 );
 			$( this ).empty().slider({
 				value: value,
@@ -183,12 +181,12 @@
 				isRTL: false,
 				animate: true,
 				slide: function( event, ui ) {
-				$( ".temp-pain-container .body-temp-container > .pain-scale" ).val( ui.value);
+				$(".temp-pain-container .body-temp-container > .pain-scale").val( ui.value);
 			}
 			});
 		});
 		
-		$( ".temp-pain-container .body-temp-container > .pain-scale" ).val( $( ".temp-pain-container .body-temp-container > .pain-scale-result" ).slider( "value" ));
+		$(".temp-pain-container .body-temp-container > .pain-scale").val( $(".temp-pain-container .body-temp-container > .pain-scale-result").slider("value"));
 	});
 	
    $("#text-weight, #text-height").bind('keyup mouseup', function (){
@@ -201,9 +199,24 @@
 		var result = kg / sqm;
 		
 		$("#bmi-result").text(result.toFixed(1))
-		if(result >= 18.5) {
-			$('.common-bmi-color').addClass('show-color');
+		if(result >= 18.5 && result <= 23) {
+			$('.bmi-result').css("color","#6FBA23");
 		}
+		
+		if(result >= 23.1 && result <= 25) {
+			$('.bmi-result').css("color","#FFDE00");
+		}
+		
+		if(result >= 25.1 && result <= 29) {
+			$('.bmi-result').css("color","#FFAE00");
+		}
+		
+		if(result > 29) {
+			$('.bmi-result').css("color","red");
+		}
+		
+		
+		
     });
 </script>
 
