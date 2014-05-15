@@ -23,50 +23,116 @@
 	
 		<div class= "main-container-title"> <h3> CONSCIOUS. COHERENT. AMBULATORY. NOT IN DISTRESS </h3> </div>
 		
-		<div class= "heart-rate-container">
-			<input class="heart-rate" data-angleOffset=0 data-angleArc=359 data-fgColor="#BF0B0A" data-thickness= "0.2" data-skin= "tron" data-max= "200" >
-		</div>
-		
-		<div>
-			<div class= "body-temp-container">
-					<input type="text" class="temperature" style="border:0; color:#f6931f; font-weight:bold;" />
-				<div id="slider-range-min"></div>
-				<div class= "body-temp-label"> <h2>BODY TEMP (C)</h2> </div>
+		<!--BLOOD PRESSURE
+		<div class= "blood-pressure-container">
+			<!-- SYTOLIC
+			<div class= "sytolic-container">
+				<div class= "text-sytolic-container">
+					<input type= "number" id= "text-sytolic" class= "text-sytolic" step= 10 value= "40" max= 200 min= 40 />
+				</div>
+				<div class= "text-mmhq-container">
+					<input type= "number" id= "text-mmhq" class= "text-mmhq" value= "-20" step= 10 max= 150 min= -20 />
+					<div class= "mmhq-label common-label"> mmHq </div>
+				</div>
 			</div>
 			
+			<!-- RESPIRATORY
+			<div class= "respiratory-container">
+				<div class= "respiratory-icon-container">
+					<figure class= "respiratory-icon common-icon"></figure>
+					<div class= "respiratory-label common-label"> CPM </div>
+				</div>
+				<input type= "number" value= "5" max= 60 min= 5 />	
+			</div>
+		</div>
+-->		
+		<!-- HEAR RATE -->
+		<div class= "blood-pressure-container">
+		<!-- SYTOLIC -->
+			<div class= "sytolic-container">
+				<div class= "text-sytolic-container">
+					<input type= "number" id= "text-sytolic" class= "text-sytolic" step= 10 value= "40" max= 200 min= 40 />
+				</div>
+				<div class= "text-mmhq-container">
+					<input type= "number" id= "text-mmhq" class= "text-mmhq" value= "-20" step= 10 max= 150 min= -20 />
+					<div class= "mmhq-label common-label"> mmHq </div>
+				</div>
+			</div>
+			
+			<div class= "heart-rate-container">
+				<figure class= "heart-rate-icon"></figure>
+				<input class="heart-rate" data-angleOffset=0 data-angleArc=359 data-fgColor="#BF0B0A" data-thickness= "0.2" data-skin= "tron" data-max= "200" />
+			</div>
+			
+						<!-- RESPIRATORY -->
+			<div class= "respiratory-container">
+				<div class= "respiratory-icon-container">
+					<figure class= "respiratory-icon common-icon"></figure>
+					<div class= "respiratory-label common-label"> CPM </div>
+				</div>
+				<input type= "number" value= "5" max= 60 min= 5 />	
+			</div>
+		</div>
+		
+		<div class= "temp-pain-container">
+		<!-- BODY TEMPERATURE -->
 			<div class= "body-temp-container">
-					<input type="text" class="temperature" style="border:0; color:#f6931f; font-weight:bold;" />
-				<div id="slider-range-min"></div>
+					<input type="text" class="temperature" />
+				<div id="slider-range-min" class= "temperature-result"></div>
+				<div class= "body-temp-label"> <h2>BODY TEMPERATURE (&deg;C)</h2> </div>
+			</div>
+			
+		<!-- PAIN SCALE -->
+			<div class= "body-temp-container">
+					<input type="text" class="pain-scale" />
+				<div class= "pain-scale-slider">0</div>
 				
 				<div class= "body-temp-label"> <h2>PAIN SCALE</h2> </div>
 			</div>
 		</div>
 		
+		
+		
+		<!--HEIGHT,BMI,WEIGHT-->
 		<div>
+		<!-- HEIGHT -->
 			<div class= "height-container">
 				<div class= "height-icon common-icon"></div>
-				<input type= "number" min= 30 max= 200 value= "30" />
+				<input id= "text-height" type= "number" min= 30 max= 200 value= "30" />
 				<div class= "cm-label"> cm </div>
 			</div>
-			
+		
+		<!-- BMI -->		
 			<div class= "bmi-container">
-				<div class= "bmi-icon"></div>
-				<div> <input type= "text" value= "21.4" /></div>
+				<div class= "bmi-icon">
+					<div class= "bmi-green common-bmi-color no-color">i</div>
+					<div class= "bmi-yellow common-bmi-color no-color">i</div>
+					<div class= "bmi-light-orange common-bmi-color no-color">i</div>
+					<div class= "bmi-orange common-bmi-color no-color">i</div>
+					<div class= "bmi-red common-bmi-color no-color">i</div>
+				</div>
+				<div id= "bmi-result" class= "bmi-result" ></div>
 				<div class= "bmi-label">BMI</div>
 			</div>
 			
+		<!-- WEIGHT -->
 			<div class= "weight-container">
-				<input type= "number" min= 30 max= 200 value= "30" />
+				<input id= "text-weight" type= "number" min= 30 max= 200 value= "30" />
 				<div class= "weight-icon common-icon"></div>
 				<div class= "kq-label"> kq </div>
 			</div>
+			
+			
+			
+
 		</div>
+		
+		
 	</div>
 		
+	
 		
-		
-		
-		
+			
 		
 		
 
@@ -89,20 +155,54 @@
 	});
 
 	$(function() {
-		$( "#slider-range-min" ).slider({
+		$(".temperature-result").slider({
 			range: "min",
-			isRTL: true,
 			value: 70,
 			min: 70,
 			max: 240,
+			step: 0.1,
+			animate: true,
 			slide: function( event, ui ) {
-				$( ".temperature" ).val( ui.value );
+				$(".temperature").val(ui.value);
 			}
 		});
-		$( ".temperature" ).val( $( "#slider-range-min" ).slider( "value" ) );
+		$(".temperature").val( $(".temperature-result").slider("value"));
 	});
+	
+	$(function() {
+		$(".temp-pain-container .body-temp-container > .pain-scale-slider").each(function(){
+			var value = parseInt($(this).text(),0);
+			$(this).empty().slider({
+				value: value,
+				range: "max",
+				isRTL: false,
+				min: 0,
+				max: 20,
+				animate: true,
+				slide: function(event, ui) {
+				$(".temp-pain-container .body-temp-container > .pain-scale").val(ui.value);
+			}
+			});
+		});
+		
+		$(".temp-pain-container .body-temp-container > .pain-scale").val($( ".temp-pain-container .body-temp-container > .pain-scale-slider").slider("value"));
+	});
+	
+   $("#text-weight, #text-height").bind('keyup mouseup', function (){
+		var n1 = $("#text-weight").val();
+		var n2 = $("#text-height").val();
+		
+		//var height = n2 / 100;
+		var height = n2 / 100;
+		var n = Math.pow(height,2)
+		var result = n1 / height;
+		
+		$("#bmi-result").text(result.toFixed(1))
+		if(result >= 18.5) {
+			$('.common-bmi-color').addClass('show-color');
+		}
+    });
 </script>
-
 
 
 </body></html>

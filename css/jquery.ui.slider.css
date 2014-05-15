@@ -18,7 +18,7 @@
 	width: 1.2em;/*1.2em;*/
 	height: 1.2em;/*1.2em;*/
 	cursor: default;
-	background-image: url(slider-knob-normal.png); /*customize*/
+	background-image: url(../image/bg-wood.png); /*customize*/
 	background-size: 20px 20px;
 	background-repeat: no-repeat;
 	background-color: #FFFFFF;
@@ -26,8 +26,7 @@
     -webkit-box-shadow: 1px 1px 2px 1px #000000;
 	   -moz-box-shadow: 1px 1px 2px 1px #ccc;
             box-shadow: 0px 4px 10px 1px #888888;
-  
-	box-shadow: 5px 5px 10px 10px solid #000000;
+			
 	-webkit-border-radius: 50%;
 	   -moz-border-radius: 50%;
 	     -o-border-radius: 50%;
