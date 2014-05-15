@@ -53,13 +53,13 @@ div {
 
 .main-container .blood-pressure-container .heart-rate-container .heart-rate-icon {
 	background-image: url(../image/icon-heart-rate.png);
-	background-size: 45px 41px;
+	background-size: 41px 37px;
 	background-repeat: no-repeat;
-	width: 45px; height: 41px;
+	width: 41px; height: 37px;
 	border: 0px solid black;
 	position: relative;
 	margin: 3px auto;
-	top: 90px; left: 33px;
+	top: 93px; left: 44px;
 }
 
 .blood-pressure-container .heart-rate-container .bpm-label {
