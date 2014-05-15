@@ -13,6 +13,12 @@ div {
 	background-color: #D5C9C9;
 }
 
+.temperature-result,
+.pain-scale-result {
+	padding: 30px 0 30px 0;
+	background: #FFF;
+}
+
 .header-title {
 	width: 90%;
 	margin: 40px auto 0 auto;
@@ -26,7 +32,7 @@ div {
 	width: 90%;
 	margin: 40px auto 50px auto;
 	background-color: #FFF;
-	padding: 20px 20px 70px 20px;
+	padding: 20px 0px 70px 0px;
 	text-align: center;
 }
 
@@ -36,14 +42,30 @@ div {
 	text-align: center;
 	width: 90%;
 	margin: 0 auto 50px auto;
-	font-size: 20px;
+	font-size: 30px;
 }
 
 
 .main-container .blood-pressure-container {
 	border: 0px solid black;
-	padding: 0px 0 80px 0;
 	height: auto;
+}
+
+.main-container .blood-pressure-container .heart-rate-container .heart-rate-icon {
+	background-image: url(../image/icon-heart-rate.png);
+	background-size: 45px 41px;
+	background-repeat: no-repeat;
+	width: 45px; height: 41px;
+	border: 0px solid black;
+	position: relative;
+	margin: 3px auto;
+	top: 90px; left: 33px;
+}
+
+.blood-pressure-container .heart-rate-container .bpm-label {
+	padding: 3px;
+	position: relative;
+	top: -80px;
 }
 
 .main-container .blood-pressure-container .sytolic-container,
@@ -51,6 +73,13 @@ div {
 .main-container .blood-pressure-container .respiratory-container {
 	border: 0px solid black;
 	display: inline-block;
+}
+
+.main-container .blood-pressure-container .sytolic-container,
+.main-container .blood-pressure-container .respiratory-container {
+	border: 0px solid #000000;
+	position: relative;
+	top: -100px;
 }
 
 .main-container .sytolic-container {
@@ -97,7 +126,7 @@ div {
 }
 
 .main-container .respiratory-container {
-	border: 0px solid #C3C3C3;
+	border: 5px solid #000000;
 	width: 30%;
 	display: inline-block;
 }
@@ -119,7 +148,7 @@ div {
 
 .common-label {
 	color: #BDA4A7;
-	font-size: 20px;
+	font-size: 25px;
 	border: 0px solid black;
 }
 
@@ -133,16 +162,16 @@ div {
 	padding: 5px;
 }
 
-.main-container .heart-rate-container {
+.main-container .blood-pressure-container .heart-rate-container {
 	border: 0px solid #C3C3C3;
-	padding: 50px;
+	padding: 0 50px 0 50px;
 	width: 15%;
 	margin: 0 auto;
 }
 
 .main-container .heart-rate-container input{
 	margin: 0 auto;
-	padding-top: 20px;	
+	padding-top: 20px;
 }
 
 .main-container .body-temp-container,
@@ -203,7 +232,7 @@ div {
 	border: 0px solid black;
 	color: #C3C3C3;
 	font-size: 25px;
-	width: 48%; margin: 0 auto;
+	width: 42%; margin: 0 auto;
 	text-align: right;
 	top: -85px;
 	position: relative;
@@ -247,7 +276,7 @@ div {
 .main-container .bmi-container .bmi-result {
 	text-align: center;
 	font-size: 60px;
-	margin-top: 75px;
+	margin-top: 80px;
 	color: #FF6600;
 	border: 1;
 }
@@ -307,10 +336,6 @@ div {
 .bmi-red {
 	background-color: #CC1313;
 	width: 12.5%;
-}
-
-.bmi-result-orange {
-	color: #CC1313;
 }
 
 .no-color {

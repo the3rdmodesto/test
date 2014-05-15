@@ -16,10 +16,11 @@
 
 </style>
 </head><body>
+<!--
 	<div class= "header-container">
 		<div class= "header-title"> PHYSICAL EXAMINATION </div>
 	<div>
-	
+-->	
 	<div class= "main-container">
 	
 		<div class= "main-container-title"> <h3> CONSCIOUS. COHERENT. AMBULATORY. NOT IN DISTRESS </h3> </div>
@@ -62,10 +63,13 @@
 			
 			<div class= "heart-rate-container">
 				<figure class= "heart-rate-icon"></figure>
-				<input class="heart-rate" data-angleOffset=0 data-angleArc=359 data-fgColor="#BF0B0A" data-thickness= "0.2" data-skin= "tron" data-max= "200" />
+				
+				<input class="heart-rate" data-angleOffset=0 data-angleArc=359 data-fgColor="#BF0B0A" data-thickness= "0.1" data-skin= "tron" data-max= "200" />
+				
+				<div class= "bpm-label common-label"> BPM </div>
 			</div>
 			
-						<!-- RESPIRATORY -->
+		<!-- RESPIRATORY -->
 			<div class= "respiratory-container">
 				<div class= "respiratory-icon-container">
 					<figure class= "respiratory-icon common-icon"></figure>
@@ -78,15 +82,15 @@
 		<div class= "temp-pain-container">
 		<!-- BODY TEMPERATURE -->
 			<div class= "body-temp-container">
-					<input type="text" class="temperature" />
-				<div id="slider-range-min" class= "temperature-result"></div>
+				<input type="text" class="temperature-result" disabled/>
+				<div id="slider-range-min" class= "temperature-slider"></div>
 				<div class= "body-temp-label"> <h2>BODY TEMPERATURE (&deg;C)</h2> </div>
 			</div>
 			
 		<!-- PAIN SCALE -->
 			<div class= "body-temp-container">
-					<input type="text" class="pain-scale" />
-				<div class= "pain-scale-result">0</div>
+				<input type="text" class="pain-scale-result" disabled/>
+				<div class= "pain-scale-slider">0</div>
 				
 				<div class= "body-temp-label"> <h2>PAIN SCALE</h2> </div>
 			</div>
@@ -121,27 +125,14 @@
 			
 		<!-- WEIGHT -->
 			<div class= "weight-container">
-				<input id= "text-weight" type= "number" min= 2 max= 200 value= 2/>
+				<input id= "text-weight" type= "number" min= 2 max= 200 value= 2 />
 				<div class= "weight-icon common-icon"></div>
 				<div class= "kq-label"> kq </div>
 			</div>
-			
-			
-			
-
 		</div>
 		
 		
 	</div>
-		
-	
-		
-			
-		
-		
-
-	</div>	
-	
 	
 <script>
 	$(function() {
@@ -152,6 +143,7 @@
 	$({value: 0}).animate({value: initval}, {
 		duration: 500,
 		easing:'swing',
+		
 		step: function()
 		{
 			$('.heart-rate').val(this.value).trigger('change');
@@ -159,7 +151,7 @@
 	});
 
 	$(function() {
-		$(".temperature-result").slider({
+		$(".temperature-slider").slider({
 			range: "min",
 			isRTL: true,
 			value: 70,
@@ -168,31 +160,33 @@
 			range: 'min',
 			step: 0.1,
 			animate: true,
-			slide: function( event, ui ) {
-				$(".temperature").val( ui.value);
+			slide: function(event, ui) {
+				$(".temperature-result").val(ui.value);
 			}
 		});
-		$(".temperature").val( $(".temperature-result").slider("value"));
+		$(".temperature-result").val($(".temperature-slider").slider("value"));
 	});
 	
 	$(function() {
-		$(".temp-pain-container .body-temp-container > .pain-scale-result").each(function() {
-			var value = parseInt( $( this ).text(), 10 );
-			$( this ).empty().slider({
+		$(".temp-pain-container .body-temp-container > .pain-scale-slider").each(function() {
+			var value = parseInt($(this).text(),10);
+			$(this).empty().slider({
 				value: value,
 				range: "min",
 				isRTL: false,
 				animate: true,
+				max: 10,
+				min: 0,
 				slide: function( event, ui ) {
-				$(".temp-pain-container .body-temp-container > .pain-scale").val( ui.value);
+				$(".temp-pain-container .body-temp-container > .pain-scale-result").val(ui.value);
 			}
 			});
 		});
 		
-		$(".temp-pain-container .body-temp-container > .pain-scale").val( $(".temp-pain-container .body-temp-container > .pain-scale-result").slider("value"));
+		$(".temp-pain-container .body-temp-container > .pain-scale-result").val( $(".temp-pain-container .body-temp-container > .pain-scale-slider").slider("value"));
 	});
 	
-   $("#text-weight, #text-height").bind('keyup mouseup', function (){
+   $("#text-weight, #text-height").bind('keyup mouseup', function(){
 		var kg = $("#text-weight").val();
 		var cm = $("#text-height").val();
 		
@@ -206,16 +200,16 @@
 			$('.bmi-result').css("color","#6FBA23");
 		}
 		
-		if(result >= 23.1 && result <= 25) {
+		else if(result >= 23.1 && result <= 25) {
 			$('.bmi-result').css("color","#FFDE00");
 		}
 		
-		if(result >= 25.1 && result <= 29) {
+		else if(result >= 25.1 && result <= 29) {
 			$('.bmi-result').css("color","#FFAE00");
 		}
 		
-		if(result > 29) {
-			$('.bmi-result').css("color","red");
+		else if(result > 29) {
+			$('.bmi-result').css("color","#FF6600");
 		}
 		
 		
