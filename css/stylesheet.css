@@ -3,8 +3,12 @@ body {
 	background-color: #703B24;
 }
 
+div {
+	font-family: 'Jura', sans-serif;
+}
+
 #slider-range-min,
-.pain-scale-result{
+.body-temp-container .pain-scale-slider {
 	border: 0;
 	background-color: #D5C9C9;
 }
@@ -231,19 +235,21 @@ body {
 }
 
 .main-container .bmi-container {
-	border: 5px solid #C3C3C3;
+	border: 0px solid #C3C3C3;
 	display: inline-block;
 	-webkit-border-radius: 10%;
-	padding: 20px;
+	width: 185px; height: 197px;
+	background-image: url(../image/icon-bmi.png);
+	background-repeat: no-repeat;
+	background-size: 185px 187px;
 }
 
 .main-container .bmi-container .bmi-result {
 	text-align: center;
 	font-size: 60px;
-	width: 150px; height: 70px;
+	margin-top: 75px;
 	color: #FF6600;
-	border: 0;
-	margin-bottom: 10px;
+	border: 1;
 }
 
 .main-container .bmi-container  .bmi-icon {
@@ -265,9 +271,18 @@ body {
 	width: 50%;
 }
 
+.bmi-result-green {
+	color: #6FBA23;
+}
+
+
 .bmi-yellow {
 	background-color: #FFDE00;
 	width: 12.5%;
+}
+
+.bmi-result-yellow {
+	color: #FFDE00;
 }
 
 .bmi-light-orange {
@@ -275,14 +290,27 @@ body {
 	width: 12.5%;
 }
 
+.bmi-result-light-orange {
+	color: #FFAE00;
+}
+
+
 .bmi-orange {
 	background-color: #FF6600;
 	width: 12.5%;
 }
 
+.bmi-result-orange {
+	color: #FF6600;
+}
+
 .bmi-red {
 	background-color: #CC1313;
 	width: 12.5%;
+}
+
+.bmi-result-orange {
+	color: #CC1313;
 }
 
 .no-color {
@@ -292,6 +320,7 @@ body {
 .show-color {
 	width: 12.5%;
 }
+
 
 .main-container .bmi-container  .bmi-label {
 	color: #FFFFFF;
