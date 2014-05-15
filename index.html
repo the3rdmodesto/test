@@ -85,7 +85,7 @@
 		<!-- PAIN SCALE -->
 			<div class= "body-temp-container">
 					<input type="text" class="pain-scale" />
-				<div class= "pain-scale-slider">0</div>
+				<div class= "pain-scale-result">0</div>
 				
 				<div class= "body-temp-label"> <h2>PAIN SCALE</h2> </div>
 			</div>
@@ -155,37 +155,40 @@
 	});
 
 	$(function() {
-		$(".temperature-result").slider({
+		$( ".temperature-result" ).slider({
 			range: "min",
+			isRTL: true,
 			value: 70,
 			min: 70,
 			max: 240,
+			range: 'min',
 			step: 0.1,
 			animate: true,
 			slide: function( event, ui ) {
-				$(".temperature").val(ui.value);
+				$( ".temperature" ).val( ui.value);
 			}
 		});
-		$(".temperature").val( $(".temperature-result").slider("value"));
+		$( ".temperature" ).val( $( ".temperature-result" ).slider( "value" ));
 	});
 	
 	$(function() {
-		$(".temp-pain-container .body-temp-container > .pain-scale-slider").each(function(){
-			var value = parseInt($(this).text(),0);
-			$(this).empty().slider({
+		
+		// setup graphic EQ
+		$( ".temp-pain-container .body-temp-container > .pain-scale-result" ).each(function() {
+			// read initial values from markup and remove that
+			var value = parseInt( $( this ).text(), 10 );
+			$( this ).empty().slider({
 				value: value,
 				range: "max",
 				isRTL: false,
-				min: 0,
-				max: 20,
 				animate: true,
-				slide: function(event, ui) {
-				$(".temp-pain-container .body-temp-container > .pain-scale").val(ui.value);
+				slide: function( event, ui ) {
+				$( ".temp-pain-container .body-temp-container > .pain-scale" ).val( ui.value);
 			}
 			});
 		});
 		
-		$(".temp-pain-container .body-temp-container > .pain-scale").val($( ".temp-pain-container .body-temp-container > .pain-scale-slider").slider("value"));
+		$( ".temp-pain-container .body-temp-container > .pain-scale" ).val( $( ".temp-pain-container .body-temp-container > .pain-scale-result" ).slider( "value" ));
 	});
 	
    $("#text-weight, #text-height").bind('keyup mouseup', function (){
